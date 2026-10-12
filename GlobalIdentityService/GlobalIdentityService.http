@@ -1,0 +1,6 @@
+@GlobalIdentityService_HostAddress = http://localhost:5093
+
+GET {{GlobalIdentityService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
