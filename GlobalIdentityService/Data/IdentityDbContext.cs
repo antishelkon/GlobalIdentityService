@@ -250,6 +250,7 @@ public partial class IdentityDbContext : DbContext
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("id");
             entity.Property(e => e.AvatarId).HasColumnName("avatar_id");
+            entity.Property(e => e.Bio).HasColumnName("bio");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("now()")
                 .HasColumnName("created_at");

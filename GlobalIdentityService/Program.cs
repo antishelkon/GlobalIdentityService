@@ -1,5 +1,6 @@
 
 using GlobalIdentityService.Data;
+using GlobalIdentityService.Dto;
 using GlobalIdentityService.Models;
 using GlobalIdentityService.Services;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,7 @@ namespace GlobalIdentityService
 
             services.AddHttpContextAccessor();
             services.AddScoped<RequestContext>();
+            services.AddScoped<UserSecurityAuditService>();
             services.AddExceptionHandler<GlobalExceptionHandler>();
             services.AddDbContext<IdentityDbContext>(options => options.UseNpgsql(connectionString));
             services.AddScoped<ApplicationService>();

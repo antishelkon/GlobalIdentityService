@@ -7,7 +7,10 @@
         string Username,
         string Email,
         string Password,
-        string? DisplayName = null
-        );
+        string? DisplayName = null);
 
+    public record PatchUserRequest(
+        string? Username = null,
+        string? Bio = null,
+        string? DisplayName = null);
 }

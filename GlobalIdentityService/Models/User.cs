@@ -27,6 +27,8 @@ public partial class User
 
     public DateTime? LastLoginAt { get; set; }
 
+    public string? Bio { get; set; }
+
     public virtual ICollection<SecurityRoleAudit> SecurityRoleAudits { get; set; } = new List<SecurityRoleAudit>();
 
     public virtual ICollection<SecurityUserAudit> SecurityUserAuditActorUsers { get; set; } = new List<SecurityUserAudit>();

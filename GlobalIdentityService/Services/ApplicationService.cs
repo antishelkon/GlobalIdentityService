@@ -22,8 +22,8 @@ namespace GlobalIdentityService.Services
         {
             ArgumentNullException.ThrowIfNull(applicationRequest);
 
-            applicationRequest.Name.ValidateNotBlank();
-            applicationRequest.Code.ValidateNotBlank();
+            applicationRequest.Name.ValidateNotNullOrEmpty();
+            applicationRequest.Code.ValidateNotNullOrEmpty();
             if (applicationRequest.Code.ToUpperInvariant() != applicationRequest.Code)
                 throw new ValidationException("code", "Code must be in upper case");
             applicationRequest.Code.ValidateNoWhiteSpaces();
@@ -59,8 +59,7 @@ namespace GlobalIdentityService.Services
             if (applicationRequest.Name is null && applicationRequest.Description is null)
                 throw new ValidationException("request", "At least one field must be provided");
 
-            if (applicationRequest.Name is not null && string.IsNullOrWhiteSpace(applicationRequest.Name))
-                throw new ValidationException("name", "Name must not be empty");
+            applicationRequest.Name.ValidateNotEmpty();
 
             var application = await GetByIdAsync(id, cancellationToken);
 
@@ -74,8 +73,7 @@ namespace GlobalIdentityService.Services
         {
             ArgumentNullException.ThrowIfNull(applicationRequest);
 
-            if (string.IsNullOrWhiteSpace(applicationRequest.Name))
-                throw new ValidationException("name", "Name is required");
+            applicationRequest.Name.ValidateNotEmpty();
 
             var application = await GetByIdAsync(id, cancellationToken);
 
